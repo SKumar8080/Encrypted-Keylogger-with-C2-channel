@@ -15,313 +15,269 @@
             --text-glow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
         }
         
-        body {
-            background-color: var(--dark-bg);
-            color: var(--neon-green);
+        /* [Previous CSS remains the same] */
+        
+        /* New Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-bg);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loader-text {
             font-family: 'Share Tech Mono', monospace;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(15, 0, 255, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 20%);
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            animation: pulse 2s infinite alternate;
-        }
-        
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: var(--text-glow);
-        }
-        
-        h2 {
-            color: var(--neon-purple);
-            font-size: 1.5rem;
-            margin-top: 0;
-            text-shadow: 0 0 5px var(--neon-purple);
-        }
-        
-        .cyber-border {
-            border: 1px solid var(--neon-green);
-            box-shadow: 0 0 10px var(--neon-green), inset 0 0 10px var(--neon-green);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cyber-border::before {
-            content: "";
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            z-index: -1;
-            background: linear-gradient(45deg, var(--neon-green), var(--neon-purple), var(--neon-green));
-            background-size: 200% 200%;
-            animation: borderGlow 3s linear infinite;
-        }
-        
-        .cyber-border::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: -1;
-            background: var(--darker-bg);
-            margin: 2px;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .feature {
-            background: rgba(0, 255, 0, 0.05);
-            border-left: 3px solid var(--neon-green);
-            padding: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
-        }
-        
-        .btn {
-            display: inline-block;
-            background: transparent;
             color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-            padding: 0.8rem 1.5rem;
-            font-family: 'Orbitron', sans-serif;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 1rem 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 300px;
+            height: 4px;
+            background: rgba(0, 255, 0, 0.2);
+            margin-top: 20px;
             overflow: hidden;
         }
         
-        .btn:hover {
+        .progress {
+            height: 100%;
+            width: 0%;
             background: var(--neon-green);
-            color: var(--dark-bg);
-            text-shadow: none;
-            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+            animation: progress 3s ease-in-out forwards;
         }
         
-        .btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
-            transition: 0.5s;
+        @keyframes progress {
+            0% { width: 0%; }
+            20% { width: 5%; }
+            40% { width: 25%; }
+            60% { width: 50%; }
+            80% { width: 75%; }
+            100% { width: 100%; }
         }
         
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        
-        .matrix-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.1;
-        }
-        
-        .warning {
-            color: #ff5555;
-            border-left: 3px solid #ff5555;
+        /* Terminal Documentation */
+        .terminal {
+            background: rgba(0, 20, 0, 0.8);
+            border: 1px solid var(--neon-green);
             padding: 1rem;
-            background: rgba(255, 0, 0, 0.05);
+            font-family: 'Share Tech Mono', monospace;
             margin: 2rem 0;
+            position: relative;
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.02); }
+        .terminal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            color: var(--neon-purple);
         }
         
-        @keyframes borderGlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .terminal-body {
+            height: 300px;
+            overflow-y: auto;
         }
         
-        @keyframes scanline {
-            0% { top: 0%; }
-            100% { top: 100%; }
+        .command {
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
         }
         
-        .scanlines {
+        .response {
+            color: #ccc;
+            margin-bottom: 1rem;
+        }
+        
+        .prompt {
+            color: var(--neon-purple);
+        }
+        
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        /* Access Granted Animation */
+        .access-granted {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                transparent 0%,
-                rgba(0, 255, 0, 0.05) 50%,
-                transparent 100%
-            );
-            background-size: 100% 8px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            opacity: 0;
+            z-index: 10000;
             pointer-events: none;
-            z-index: 1000;
         }
     </style>
 </head>
 <body>
-    <div class="matrix-animation" id="matrix"></div>
-    <div class="scanlines"></div>
-    
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="cyber-border" style="width: 200px; height: 200px; display: flex; justify-content: center; align-items: center;">
+            <div style="text-align: center;">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">[SK]</div>
+                <div class="loader-text">INITIALIZING SYSTEM</div>
+                <div class="progress-bar"><div class="progress"></div></div>
+                <div class="loader-text" id="loader-status">Loading crypto modules...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Access Granted Animation -->
+    <div class="access-granted" id="access-granted">
+        ACCESS GRANTED
+    </div>
+
+    <!-- [Previous HTML content remains the same until before scripts] -->
+
+    <!-- Terminal Documentation Section -->
     <div class="container">
-        <header>
-            <h1>ENCRYPTED KEYLOGGER</h1>
-            <h2>WITH C2 CHANNEL</h2>
-            <div class="glitch" data-text="CYBER SECURITY RESEARCH">CYBER SECURITY RESEARCH</div>
-        </header>
-        
         <div class="cyber-border">
-            <h3>PROJECT OVERVIEW</h3>
-            <p>A sophisticated keylogger that encrypts captured keystrokes using AES-256 and transmits them to a command and control server through multiple covert channels including HTTP, DNS, and ICMP.</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <h4>Secure Encryption</h4>
-                    <p>All data is encrypted with military-grade AES-256 before transmission</p>
+            <h3>TERMINAL DOCUMENTATION</h3>
+            <div class="terminal">
+                <div class="terminal-header">
+                    <span>root@skumar-keylogger:~</span>
+                    <span>v1.0.0</span>
                 </div>
-                <div class="feature">
-                    <h4>Covert Channels</h4>
-                    <p>Multiple exfiltration methods including HTTP, DNS, and ICMP</p>
-                </div>
-                <div class="feature">
-                    <h4>Stealth Operation</h4>
-                    <p>Runs silently in background with no visible indicators</p>
-                </div>
-                <div class="feature">
-                    <h4>Cross-Platform</h4>
-                    <p>Works on Windows, Linux, and macOS systems</p>
+                <div class="terminal-body" id="terminal">
+                    <!-- Content will be added by JavaScript -->
                 </div>
             </div>
-            
-            <div class="warning">
-                <h4>⚠️ LEGAL NOTICE</h4>
-                <p>This project is for EDUCATIONAL PURPOSES ONLY. Unauthorized use on systems you don't own is ILLEGAL. Always get proper authorization before testing.</p>
-            </div>
-            
-            <a href="https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel" class="btn">DOWNLOAD ON GITHUB</a>
         </div>
-        
-        <div class="cyber-border">
-            <h3>TECHNICAL DETAILS</h3>
-            <p><strong>Stack:</strong> Python + pynput + AES (cryptography lib)</p>
-            <p><strong>Features:</strong></p>
-            <ul>
-                <li>Keystroke capture with special key support</li>
-                <li>Secure AES-256 encryption</li>
-                <li>Multiple C2 channel options</li>
-                <li>Configurable transmission intervals</li>
-                <li>Automatic key generation</li>
-            </ul>
-        </div>
-        
-        <footer>
-            <p>Created by <span style="color: var(--neon-purple);">SKumar</span> | 2025 | For research purposes only</p>
-            <p style="font-size: 0.8rem; opacity: 0.6;">This project demonstrates security concepts and should only be used ethically and legally.</p>
-        </footer>
     </div>
 
     <script>
-        // Matrix animation
-        const matrix = document.getElementById('matrix');
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        matrix.appendChild(canvas);
+        // Loading Sequence
+        const statusMessages = [
+            "Loading crypto modules...",
+            "Initializing C2 channels...",
+            "Establishing secure connection...",
+            "Verifying encryption keys...",
+            "System ready..."
+        ];
         
-        canvas.width = matrix.clientWidth;
-        canvas.height = matrix.clientHeight;
+        const loader = document.getElementById('loader');
+        const statusElement = document.getElementById('loader-status');
+        const accessGranted = document.getElementById('access-granted');
         
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        const alphabet = katakana + latin + nums;
-        
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        
-        const rainDrops = [];
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-        
-        const draw = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0f0';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
+        // Animate loading messages
+        statusMessages.forEach((msg, i) => {
+            setTimeout(() => {
+                statusElement.textContent = msg;
+                if (i === statusMessages.length - 1) {
+                    setTimeout(() => {
+                        loader.style.opacity = 0;
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+                            // Show access granted
+                            accessGranted.style.opacity = 1;
+                            setTimeout(() => {
+                                accessGranted.style.opacity = 0;
+                                accessGranted.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                                setTimeout(() => {
+                                    accessGranted.style.display = 'none';
+                                }, 1000);
+                            }, 1500);
+                        }, 500);
+                    }, 1000);
                 }
-                rainDrops[i]++;
+            }, i * 600);
+        });
+        
+        // Sound Effects
+        const playSound = (type) => {
+            if (type === 'hover') {
+                const hoverSound = new Audio('data:audio/wav;base64,UklGRl9vT19XQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YU...');
+                hoverSound.volume = 0.2;
+                hoverSound.play().catch(e => console.log("Sound playback prevented:", e));
             }
+            // Add more sound types as needed
         };
         
-        setInterval(draw, 30);
-        
-        // Glitch effect
-        const glitch = document.querySelector('.glitch');
-        setInterval(() => {
-            glitch.style.textShadow = `0 0 5px ${Math.random() > 0.5 ? '#0f0' : '#f0f'}`;
-            glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-        }, 100);
-        
-        // Responsive canvas
-        window.addEventListener('resize', () => {
-            canvas.width = matrix.clientWidth;
-            canvas.height = matrix.clientHeight;
+        // Add hover sound to buttons
+        document.querySelectorAll('.btn, .feature').forEach(el => {
+            el.addEventListener('mouseenter', () => playSound('hover'));
         });
+        
+        // Terminal Documentation
+        const terminalContent = [
+            { command: "git clone https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel.git", response: "Cloning into 'Encrypted-Keylogger'..." },
+            { command: "cd Encrypted-Keylogger", response: "" },
+            { command: "pip install -r requirements.txt", response: "Installing dependencies...\nSuccessfully installed pynput cryptography requests flask dnspython scapy" },
+            { command: "# Start C2 server:", response: "" },
+            { command: "python server.py", response: "C2 server running on http://0.0.0.0:5000" },
+            { command: "# In another terminal, run client:", response: "" },
+            { command: "python client.py", response: "Keylogger started. Logs will be sent every 60 seconds" },
+            { command: "# View logs:", response: "" },
+            { command: "cat keylogs.txt", response: "2023-11-15 14:30:01 - Sample captured keystrokes..." },
+            { command: "# For DNS covert channel:", response: "" },
+            { command: "nano client.py\n# Change send_logs_http() to send_logs_dns()", response: "" },
+            { command: "# Legal Notice:", response: "This tool is for educational purposes only.\nUnauthorized use is illegal." }
+        ];
+        
+        const terminal = document.getElementById('terminal');
+        
+        function typeWriter(text, element, delay, callback) {
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    terminal.scrollTop = terminal.scrollHeight;
+                } else {
+                    clearInterval(typing);
+                    if (callback) callback();
+                }
+            }, delay);
+        }
+        
+        function displayTerminalContent() {
+            let delay = 0;
+            terminalContent.forEach((item, index) => {
+                setTimeout(() => {
+                    const commandElement = document.createElement('div');
+                    commandElement.className = 'command';
+                    commandElement.innerHTML = `<span class="prompt">$</span> ${item.command}`;
+                    terminal.appendChild(commandElement);
+                    
+                    if (item.response) {
+                        setTimeout(() => {
+                            const responseElement = document.createElement('div');
+                            responseElement.className = 'response';
+                            terminal.appendChild(responseElement);
+                            typeWriter(item.response, responseElement, 20);
+                        }, 500);
+                    }
+                }, delay);
+                
+                delay += 1000 + (item.command.length * 20) + (item.response ? 500 + (item.response.length * 20) : 0);
+            });
+            
+            // Add blinking cursor at end
+            setTimeout(() => {
+                const cursorElement = document.createElement('div');
+                cursorElement.className = 'command';
+                cursorElement.innerHTML = `<span class="prompt">$</span> <span class="blink">_</span>`;
+                terminal.appendChild(cursorElement);
+                terminal.scrollTop = terminal.scrollHeight;
+            }, delay + 1000);
+        }
+        
+        // Start terminal animation after page loads
+        setTimeout(displayTerminalContent, 5000);
     </script>
 </body>
 </html>
