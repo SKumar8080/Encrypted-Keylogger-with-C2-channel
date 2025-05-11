@@ -15,6 +15,209 @@
             --text-glow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
         }
         
+        body {
+            background-color: var(--dark-bg);
+            color: var(--neon-green);
+            font-family: 'Share Tech Mono', monospace;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 0, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--text-glow);
+        }
+        
+        h2 {
+            color: var(--neon-purple);
+            font-size: 1.5rem;
+            margin-top: 0;
+            text-shadow: 0 0 5px var(--neon-purple);
+        }
+        
+        .cyber-border {
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 10px var(--neon-green), inset 0 0 10px var(--neon-green);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cyber-border::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-purple), var(--neon-green));
+            background-size: 200% 200%;
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        .cyber-border::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background: var(--darker-bg);
+            margin: 2px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .feature {
+            background: rgba(0, 255, 0, 0.05);
+            border-left: 3px solid var(--neon-green);
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            padding: 0.8rem 1.5rem;
+            font-family: 'Orbitron', sans-serif;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 1rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            text-shadow: none;
+            box-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.4), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .matrix-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .warning {
+            color: #ff5555;
+            border-left: 3px solid #ff5555;
+            padding: 1rem;
+            background: rgba(255, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        
+        @keyframes borderGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes scanline {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 255, 0, 0.05) 50%,
+                transparent 100%
+            );
+            background-size: 100% 8px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap');
+        
+        :root {
+            --neon-green: #0f0;
+            --neon-purple: #f0f;
+            --dark-bg: #0a0a12;
+            --darker-bg: #050508;
+            --text-glow: 0 0 5px var(--neon-green), 0 0 10px var(--neon-green);
+        }
+        
         /* [Previous CSS remains the same] */
         
         /* New Loading Animation */
@@ -278,6 +481,122 @@
         
         // Start terminal animation after page loads
         setTimeout(displayTerminalContent, 5000);
+    </script>
+    <div class="matrix-animation" id="matrix"></div>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <header>
+            <h1>ENCRYPTED KEYLOGGER</h1>
+            <h2>WITH C2 CHANNEL</h2>
+            <div class="glitch" data-text="CYBER SECURITY RESEARCH">CYBER SECURITY RESEARCH</div>
+        </header>
+        
+        <div class="cyber-border">
+            <h3>PROJECT OVERVIEW</h3>
+            <p>A sophisticated keylogger that encrypts captured keystrokes using AES-256 and transmits them to a command and control server through multiple covert channels including HTTP, DNS, and ICMP.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h4>Secure Encryption</h4>
+                    <p>All data is encrypted with military-grade AES-256 before transmission</p>
+                </div>
+                <div class="feature">
+                    <h4>Covert Channels</h4>
+                    <p>Multiple exfiltration methods including HTTP, DNS, and ICMP</p>
+                </div>
+                <div class="feature">
+                    <h4>Stealth Operation</h4>
+                    <p>Runs silently in background with no visible indicators</p>
+                </div>
+                <div class="feature">
+                    <h4>Cross-Platform</h4>
+                    <p>Works on Windows, Linux, and macOS systems</p>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <h4>⚠️ LEGAL NOTICE</h4>
+                <p>This project is for EDUCATIONAL PURPOSES ONLY. Unauthorized use on systems you don't own is ILLEGAL. Always get proper authorization before testing.</p>
+            </div>
+            
+            <a href="https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel" class="btn">DOWNLOAD ON GITHUB</a>
+        </div>
+        
+        <div class="cyber-border">
+            <h3>TECHNICAL DETAILS</h3>
+            <p><strong>Stack:</strong> Python + pynput + AES (cryptography lib)</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Keystroke capture with special key support</li>
+                <li>Secure AES-256 encryption</li>
+                <li>Multiple C2 channel options</li>
+                <li>Configurable transmission intervals</li>
+                <li>Automatic key generation</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Created by <span style="color: var(--neon-purple);">SKumar</span> | 2025 | For research purposes only</p>
+            <p style="font-size: 0.8rem; opacity: 0.6;">This project demonstrates security concepts and should only be used ethically and legally.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Matrix animation
+        const matrix = document.getElementById('matrix');
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        matrix.appendChild(canvas);
+        
+        canvas.width = matrix.clientWidth;
+        canvas.height = matrix.clientHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Glitch effect
+        const glitch = document.querySelector('.glitch');
+        setInterval(() => {
+            glitch.style.textShadow = `0 0 5px ${Math.random() > 0.5 ? '#0f0' : '#f0f'}`;
+            glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+        }, 100);
+        
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = matrix.clientWidth;
+            canvas.height = matrix.clientHeight;
+        });
     </script>
 </body>
 </html>
