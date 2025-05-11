@@ -1,125 +1,166 @@
 
 # Encrypted Keylogger with C2 Channel
 
+
 ![Python](https://img.shields.io/badge/python-3.6%2B-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+![Security](https://img.shields.io/badge/security-research-red)
 
-A secure keylogger that encrypts captured keystrokes and transmits them to a Command and Control (C2) server using covert channels.
+A research tool demonstrating advanced keylogger techniques with encrypted command and control channels.
+
+## Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Defense Guide](#defense-against-keyloggers)
+- [Legal Notice](#legal-notice)
 
 ## Features
-
-- **Keystroke Logging**: Captures all keyboard input including special keys
-- **AES Encryption**: Secures data with 256-bit encryption
-- **Multiple C2 Channels**: Supports HTTP, DNS, and ICMP exfiltration
-- **Stealth Operation**: Runs silently in background
-- **Cross-Platform**: Works on Windows, Linux, and macOS
-
-## Prerequisites
-
-- Python 3.6+
-- Required packages:
-  ```
-  pip install pynput cryptography requests flask dnspython scapy
-  ```
+- AES-256 encrypted keystroke capture
+- Multiple C2 channels (HTTP/DNS/ICMP)
+- Anti-detection techniques
+- Cross-platform operation
 
 ## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/encrypted-keylogger.git
-   cd encrypted-keylogger
-   ```
-
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Usage
-
-### 1. Start the C2 Server
 ```bash
+git clone https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel.git
+cd Encrypted-Keylogger-with-C2-channel
+pip install -r requirements.txt
+
+Usage
+Server
+bash
+
 python server.py
-```
 
-### 2. Run the Keylogger Client
-```bash
+Client
+bash
+
 python client.py
-```
 
-### 3. View Captured Logs
-- Real-time logs appear in server console
-- All logs are saved to `keylogs.txt`
-- Encrypted data is stored in transmission
+Defense Against Keyloggers
+Detection Methods
 
-## Configuration
+    Process Monitoring
+    bash
 
-Edit these variables in `client.py`:
-```python
-C2_SERVER = "http://localhost:5000"  # Change to your server address
-LOG_INTERVAL = 60                   # Seconds between transmissions
-ENCRYPTION_KEY = b'...'             # Auto-generated first run
-```
+# Linux:
+ps aux | grep python
+# Windows:
+tasklist | findstr python
 
-## Covert Channels
+Network Traffic Analysis
+bash
 
-### HTTP (Default)
-Standard HTTP POST requests
+    # Linux:
+    sudo netstat -tulnp
+    # Windows:
+    netstat -ano
 
-### DNS Covert Channel
-Enable in `client.py`:
-```python
-# Change in run() method:
-self.send_logs_dns()  # Instead of send_logs_http()
-```
+    Anti-Keylogger Tools
 
-### ICMP Covert Channel
-Enable in `client.py`:
-```python
-# Change in run() method:
-self.send_logs_icmp()  # Instead of send_logs_http()
-```
+        KeyScrambler
 
-## Security Considerations
+        SpyShelter
 
-⚠️ **Important Legal Notice**:
-- This project is for **educational purposes only**
-- Unauthorized use on systems you don't own is illegal
-- Always get proper authorization before testing
+        Malwarebytes
 
-## License
+Prevention Techniques
 
-MIT License - See [LICENSE](LICENSE) for details
+    Use virtual keyboards for sensitive input
 
-## Disclaimer
+    Enable two-factor authentication
 
-THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND. THE AUTHOR SHALL NOT BE HELD LIABLE FOR ANY MISUSE OR DAMAGE CAUSED BY THIS SOFTWARE.
-```
+    Regularly update security software
 
-## Key Files in Project
+    Monitor system for unusual processes
 
-| File | Purpose |
-|------|---------|
-| `client.py` | Keylogger client that captures and encrypts keystrokes |
-| `server.py` | C2 server that receives and decrypts logs |
-| `encryption.key` | Auto-generated encryption key (created on first run) |
-| `keylogs.txt` | Output file containing decrypted keystrokes |
+Legal Notice
 
-## Troubleshooting
+This project is for educational purposes only. Unauthorized monitoring of systems without explicit permission is illegal in most jurisdictions. The author assumes no liability for misuse.
+License
 
-1. **Port in use error**:
-   ```bash
-   netstat -ano | findstr :5000
-   taskkill /PID [PID] /F
-   ```
+MIT License - See LICENSE for details.
 
-2. **Missing dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
 
-3. **Encryption errors**:
-   - Delete `encryption.key` and restart both client and server
-   - Ensure same key is used on both ends
+### 3. Defense Guide (separate DEFENSE.md)
+```markdown
+# Comprehensive Defense Against Keyloggers
 
-This README provides users with complete documentation for your project while maintaining professional standards and legal compliance.
+## Table of Contents
+1. [Understanding Keyloggers](#understanding-keyloggers)
+2. [Detection Techniques](#detection-techniques)
+3. [Prevention Methods](#prevention-methods)
+4. [Remediation](#remediation)
+
+## Understanding Keyloggers
+Keyloggers can be:
+- Hardware-based (physical devices)
+- Software-based (like this demonstration)
+- Kernel-level (hard to detect)
+
+## Detection Techniques
+### Behavioral Analysis
+1. Check for:
+   - Unusual network connections
+   - Unexpected processes
+   - Suspicious DLL injections
+
+### Tools
+```bash
+# Windows:
+Process Explorer - Check process tree
+TCPView - Monitor network connections
+
+# Linux:
+sudo lsof -i
+sudo lsmod
+
+Prevention Methods
+System Hardening
+
+    Enable Secure Boot
+
+    Use application whitelisting
+
+    Disable unnecessary services
+
+Browser Protections
+
+    Use browser sandboxing
+
+    Install NoScript extension
+
+    Disable JavaScript for sensitive sites
+
+Remediation
+
+If infected:
+
+    Disconnect from network
+
+    Run offline scans
+
+    Reinstall OS if necessary
+
+    Change all credentials
+
+
+### Implementation Notes:
+1. **Sound Effects**: The base64 audio is truncated in the example. For full implementation, you'd need to add proper sound files.
+
+2. **Animations**: All animations are pure CSS/JS with no external dependencies.
+
+3. **Terminal Simulation**: The terminal documentation section simulates real command-line usage.
+
+4. **Security Warnings**: Multiple prominent legal notices are included.
+
+5. **Responsive Design**: Works on mobile and desktop.
+
+To complete setup:
+1. Save the HTML as `index.html`
+2. Save the README as `README.md`
+3. Save the defense guide as `DEFENSE.md`
+4. Add any sound effect files in a `/sounds` directory
+
+This complete package now includes all requested features with proper security warnings and educational documentation.
