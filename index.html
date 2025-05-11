@@ -362,7 +362,123 @@
         </div>
     </div>
 
+   
+    <div class="matrix-animation" id="matrix"></div>
+    <div class="scanlines"></div>
+    
+    <div class="container">
+        <header>
+            <h1>ENCRYPTED KEYLOGGER</h1>
+            <h2>WITH C2 CHANNEL</h2>
+            <div class="glitch" data-text="CYBER SECURITY RESEARCH">CYBER SECURITY RESEARCH</div>
+        </header>
+        
+        <div class="cyber-border">
+            <h3>PROJECT OVERVIEW</h3>
+            <p>A sophisticated keylogger that encrypts captured keystrokes using AES-256 and transmits them to a command and control server through multiple covert channels including HTTP, DNS, and ICMP.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <h4>Secure Encryption</h4>
+                    <p>All data is encrypted with military-grade AES-256 before transmission</p>
+                </div>
+                <div class="feature">
+                    <h4>Covert Channels</h4>
+                    <p>Multiple exfiltration methods including HTTP, DNS, and ICMP</p>
+                </div>
+                <div class="feature">
+                    <h4>Stealth Operation</h4>
+                    <p>Runs silently in background with no visible indicators</p>
+                </div>
+                <div class="feature">
+                    <h4>Cross-Platform</h4>
+                    <p>Works on Windows, Linux, and macOS systems</p>
+                </div>
+            </div>
+            
+            <div class="warning">
+                <h4>⚠️ LEGAL NOTICE</h4>
+                <p>This project is for EDUCATIONAL PURPOSES ONLY. Unauthorized use on systems you don't own is ILLEGAL. Always get proper authorization before testing.</p>
+            </div>
+            
+            <a href="https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel" class="btn">DOWNLOAD ON GITHUB</a>
+        </div>
+        
+        <div class="cyber-border">
+            <h3>TECHNICAL DETAILS</h3>
+            <p><strong>Stack:</strong> Python + pynput + AES (cryptography lib)</p>
+            <p><strong>Features:</strong></p>
+            <ul>
+                <li>Keystroke capture with special key support</li>
+                <li>Secure AES-256 encryption</li>
+                <li>Multiple C2 channel options</li>
+                <li>Configurable transmission intervals</li>
+                <li>Automatic key generation</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Created by <span style="color: var(--neon-purple);">SKumar</span> | 2025 | For research purposes only</p>
+            <p style="font-size: 0.8rem; opacity: 0.6;">This project demonstrates security concepts and should only be used ethically and legally.</p>
+        </footer>
+    </div>
+
     <script>
+        // Matrix animation
+        const matrix = document.getElementById('matrix');
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        matrix.appendChild(canvas);
+        
+        canvas.width = matrix.clientWidth;
+        canvas.height = matrix.clientHeight;
+        
+        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        const draw = () => {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        };
+        
+        setInterval(draw, 30);
+        
+        // Glitch effect
+        const glitch = document.querySelector('.glitch');
+        setInterval(() => {
+            glitch.style.textShadow = `0 0 5px ${Math.random() > 0.5 ? '#0f0' : '#f0f'}`;
+            glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+        }, 100);
+        
+        // Responsive canvas
+        window.addEventListener('resize', () => {
+            canvas.width = matrix.clientWidth;
+            canvas.height = matrix.clientHeight;
+        });
+         
         // Loading Sequence
         const statusMessages = [
             "Loading crypto modules...",
@@ -481,122 +597,7 @@
         
         // Start terminal animation after page loads
         setTimeout(displayTerminalContent, 5000);
-    </script>
-    <div class="matrix-animation" id="matrix"></div>
-    <div class="scanlines"></div>
-    
-    <div class="container">
-        <header>
-            <h1>ENCRYPTED KEYLOGGER</h1>
-            <h2>WITH C2 CHANNEL</h2>
-            <div class="glitch" data-text="CYBER SECURITY RESEARCH">CYBER SECURITY RESEARCH</div>
-        </header>
-        
-        <div class="cyber-border">
-            <h3>PROJECT OVERVIEW</h3>
-            <p>A sophisticated keylogger that encrypts captured keystrokes using AES-256 and transmits them to a command and control server through multiple covert channels including HTTP, DNS, and ICMP.</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <h4>Secure Encryption</h4>
-                    <p>All data is encrypted with military-grade AES-256 before transmission</p>
-                </div>
-                <div class="feature">
-                    <h4>Covert Channels</h4>
-                    <p>Multiple exfiltration methods including HTTP, DNS, and ICMP</p>
-                </div>
-                <div class="feature">
-                    <h4>Stealth Operation</h4>
-                    <p>Runs silently in background with no visible indicators</p>
-                </div>
-                <div class="feature">
-                    <h4>Cross-Platform</h4>
-                    <p>Works on Windows, Linux, and macOS systems</p>
-                </div>
-            </div>
-            
-            <div class="warning">
-                <h4>⚠️ LEGAL NOTICE</h4>
-                <p>This project is for EDUCATIONAL PURPOSES ONLY. Unauthorized use on systems you don't own is ILLEGAL. Always get proper authorization before testing.</p>
-            </div>
-            
-            <a href="https://github.com/SKumar8080/Encrypted-Keylogger-with-C2-channel" class="btn">DOWNLOAD ON GITHUB</a>
-        </div>
-        
-        <div class="cyber-border">
-            <h3>TECHNICAL DETAILS</h3>
-            <p><strong>Stack:</strong> Python + pynput + AES (cryptography lib)</p>
-            <p><strong>Features:</strong></p>
-            <ul>
-                <li>Keystroke capture with special key support</li>
-                <li>Secure AES-256 encryption</li>
-                <li>Multiple C2 channel options</li>
-                <li>Configurable transmission intervals</li>
-                <li>Automatic key generation</li>
-            </ul>
-        </div>
-        
-        <footer>
-            <p>Created by <span style="color: var(--neon-purple);">SKumar</span> | 2025 | For research purposes only</p>
-            <p style="font-size: 0.8rem; opacity: 0.6;">This project demonstrates security concepts and should only be used ethically and legally.</p>
-        </footer>
-    </div>
-
-    <script>
-        // Matrix animation
-        const matrix = document.getElementById('matrix');
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        matrix.appendChild(canvas);
-        
-        canvas.width = matrix.clientWidth;
-        canvas.height = matrix.clientHeight;
-        
-        const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        const nums = '0123456789';
-        const alphabet = katakana + latin + nums;
-        
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        
-        const rainDrops = [];
-        for (let x = 0; x < columns; x++) {
-            rainDrops[x] = 1;
-        }
-        
-        const draw = () => {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            ctx.fillStyle = '#0f0';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < rainDrops.length; i++) {
-                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-                
-                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                    rainDrops[i] = 0;
-                }
-                rainDrops[i]++;
-            }
-        };
-        
-        setInterval(draw, 30);
-        
-        // Glitch effect
-        const glitch = document.querySelector('.glitch');
-        setInterval(() => {
-            glitch.style.textShadow = `0 0 5px ${Math.random() > 0.5 ? '#0f0' : '#f0f'}`;
-            glitch.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
-        }, 100);
-        
-        // Responsive canvas
-        window.addEventListener('resize', () => {
-            canvas.width = matrix.clientWidth;
-            canvas.height = matrix.clientHeight;
-        });
+   
     </script>
 </body>
 </html>
